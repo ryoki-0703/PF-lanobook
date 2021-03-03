@@ -1,0 +1,2 @@
+module LanobesHelper
+end
