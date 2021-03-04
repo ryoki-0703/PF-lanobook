@@ -1,0 +1,46 @@
+<div class="lanobe-body">
+  <%= attachment_image_tag @lanobe, :image, size: "500x500" %>
+  <p>タイトル：<%= @lanobe.title %></p>
+  <p>説明：<%= @lanobe.introduction %></p>
+  <p>ジャンル : <%= @lanobe.category.name %></p>
+  <p>ユーザーネーム：<%= @lanobe.user.name %></p>
+  <p>投稿日時：<%= @lanobe.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @lanobe.user == current_user %>
+    <%= link_to "編集", edit_lanobe_path(@lanobe) %>
+    <%= link_to "削除", lanobe_path(@lanobe), method: :delete %>
+  <% end %>
+
+  <% if @lanobe.favorited_by?(current_user) %>
+    <p>
+      <%= link_to lanobe_favorites_path(@lanobe), method: :delete do %>
+        ♥<%= @lanobe.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to lanobe_favorites_path(@lanobe), method: :post do %>
+        ♡<%= @lanobe.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<div class="comments">
+  <p>コメント件数：<%= @lanobe.post_comments.count %></p>
+  <% @lanobe.post_comments.each do |post_comment| %>
+    <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg" %></p>
+    <%= post_comment.user.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+    <% if post_comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "削除", lanobe_post_comment_path(post_comment.lanobe, post_comment), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="new-comment">
+  <%= form_with(model:[@lanobe, @post_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

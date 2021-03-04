@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-5">
+      <h3 class="profile-name"><%= @user.name %></h3>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+      <% if @user.id == current_user.id %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+      <% end %>
+    </div>
+
+    <div class="col-md-7">
+      <% @lanobes.each do |lanobe| %>
+        <%= link_to lanobe_path(lanobe.id) do %>
+          <%= attachment_image_tag lanobe, :image, size: "300x300" %>
+        <% end %>
+        <p>タイトル：<%= lanobe.title %></p>
+        <p>説明：<%= lanobe.introduction %></p>
+        <p>ユーザーネーム：<%= lanobe.user.name %></p>
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="col-xs-12">
+    <% if @model == "user" %>
+    <h2>Users search for '<%= @value %>'</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+            </tr>
+        </thead>
+    <% @datas.each do |user| %>
+        <tbody>
+            <tr>
+                <th>
+                    <%= attachment_image_tag(user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40') %>
+                </th>
+                <th>
+                  <%= link_to user_path(user) do %>
+                    <%= user.name %>
+                  <% end %>
+                </th>
+            </tr>
+        </tbody>
+    <% end %>
+    <% elsif @model == "lanobe" %>
+    <h2>Lanobes search for '<%= @value %>'</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>タイトル</th>
+                <th>説明</th>
+            </tr>
+        </thead>
+        <% @datas.each do |lanobe| %>
+        <tbody>
+            <tr>
+                <th>
+                    <%= attachment_image_tag(lanobe, :image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40') %>
+                </th>
+                <th>
+                  <%= link_to lanobe_path(lanobe) do %>
+                    <%= lanobe.title %>
+                  <% end %>
+                </th>
+                <th>
+                    <%= lanobe.introduction %>
+                </th>
+            </tr>
+        </tbody>
+        <% end %>
+    <% end %>
+    </table>
+  </div>
+</div>
