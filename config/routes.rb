@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   devise_for :users
 
-  resources :lanobes do
+  resources :lanobes, param: :id do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end

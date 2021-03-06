@@ -12,7 +12,13 @@ class LanobesController < ApplicationController
   end
 
   def index
-    @lanobes = Lanobe.page(params[:page]).reverse_order
+    if params[:category_id]
+      @categroy = Category.find(params[:category_id])
+      @lanobes =Lanobe.where(category_id: params[:category_id]).page(params[:page]).reverse_order
+    else
+      @lanobes =Lanobe.page(params[:page]).reverse_order
+    end
+
   end
 
   def show
