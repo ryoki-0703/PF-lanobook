@@ -17,3 +17,19 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/*global $*/
+
+$(function(){
+$('.slider').slick({
+    autoplay:true,
+    centerMode: true,
+    centerPadding: '5%',
+    dots: true,
+    focusOnSelect: true,
+    infinite: true,
+    touchMove: true,
+    prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="left:35px;">Previous</button>',
+    nextArrow: '<button class="slick-next slick-arrow" aria-label="Previous" type="button" style="right:35px;">Next</button>'
+});
+});

@@ -15,3 +15,59 @@
  */
 
  @import "bootstrap";
+.sliderArea {
+  background: #fff;
+  overflow: hidden;
+}
+.sliderWide {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.sliderWide .slick-arrow {
+ // opacity: 0;
+  transition-duration: 0.3s;
+}
+.sliderWide:hover .slick-arrow {
+  opacity: 1;
+}
+.slider {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0;
+}
+.slider .slick-list {
+  overflow: visible;
+}
+.slider .slick-track {}
+.slider .slick-slide {
+  padding: 0 10px;
+  opacity: .5;
+  transition-duration: 0.3s;
+}
+.slider .slick-slide.slick-current {
+  opacity: 1;
+}
+.slider .slick-slide a {
+  display: block;
+}
+.slider .slick-slide a:hover {
+  display: block;
+  opacity: .7;
+}
+.slider img {
+  height: auto;
+  width: 100%;
+}
+.slick-prev, .slick-next {
+  z-index: 1;
+}
+.slick-dots {
+  bottom: -33px;
+}
+.slick-prev {
+    left: 35px;
+}
+.slick-next {
+    right: 35px;
+}

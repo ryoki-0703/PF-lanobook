@@ -6,12 +6,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick-theme.min.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick.min.js"></script>
   </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <%= link_to "ロゴ", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -68,7 +71,7 @@
           <%= form_with url:search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do |f| %>
             <%= f.select "search[model]", options_for_select({ "User" => "user", "Lanobe" => "lanobe" }) %>
             <%= f.select "search[how]", options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
-            <%= f.text_field "search[value]", placeholder: "ユーザー名、タイトル名で検索", class: "form-control mr-sm-2" %>
+            <%= f.text_field "search[value]", placeholder: "ユーザー名 タイトル名で検索", class: "form-control mr-sm-2" %>
             <%= f.submit "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
           <% end %>
         </li>

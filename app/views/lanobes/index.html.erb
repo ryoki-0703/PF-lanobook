@@ -1,4 +1,8 @@
-
+<% if params[:category_id].nil? %>
+  <h2>投稿一覧</h2>
+<% else %>
+  <h2><%= @categroy.name %></h2>
+<% end %>
 
 <% @lanobes.each do |lanobe| %>
   <div>
@@ -10,7 +14,7 @@
     <p>説明：<%= lanobe.introduction %></p>
     <p>ジャンル : <%= lanobe.category.name %></p>
     <p>ユーザーネーム：<%= lanobe.user.name %></p>
-    <p><%= link_to "#{lanobe.post_comments.count} コメント", lanobe_path(lanobe.id) %></p>
+    <p>コメント : <%= lanobe.post_comments.count %></p>
   </div>
 <% end %>
 <%= paginate @lanobes %>
