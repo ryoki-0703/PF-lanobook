@@ -5,6 +5,8 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.lanobe_id = @lanobe.id
     comment.save
+    @errors = comment.errors.full_messages
+
   end
 
   def destroy

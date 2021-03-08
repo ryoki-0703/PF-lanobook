@@ -1,3 +1,5 @@
+
+
 <div class="lanobe-body">
   <%= attachment_image_tag @lanobe, :image, size: "500x500" %>
   <p>タイトル：<%= @lanobe.title %></p>
@@ -17,5 +19,5 @@
 </div>
 
 <div class="comments" id="comment_<%= @lanobe.id %>">
-  <%= render "comment", lanobe: @lanobe %>
+  <%= render "comment", lanobe: @lanobe, errors: [] %>
 </div>

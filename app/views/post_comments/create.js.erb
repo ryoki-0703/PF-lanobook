@@ -1,1 +1,1 @@
-document.getElementById('comment_<%= @lanobe.id %>').innerHTML = '<%= j(render "lanobes/comment", lanobe: @lanobe) %>'
+document.getElementById('comment_<%= @lanobe.id %>').innerHTML = '<%= j(render "lanobes/comment", lanobe: @lanobe, errors: @errors) %>'

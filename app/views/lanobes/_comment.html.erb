@@ -1,4 +1,10 @@
 <p><%= lanobe.post_comments.count %>件コメント</p>
+<% if errors.present? %>
+  <% errors.each do |error| %>
+  <%= error %>
+  <% end %>
+
+<% end %>
   <% lanobe.post_comments.each do |post_comment| %>
     <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 25, 25, fallback: "no_image.jpg" %></p>
     <%= post_comment.user.name %>
