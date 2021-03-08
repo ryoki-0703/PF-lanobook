@@ -1,0 +1,18 @@
+<p><%= lanobe.post_comments.count %>件コメント</p>
+  <% lanobe.post_comments.each do |post_comment| %>
+    <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 25, 25, fallback: "no_image.jpg" %></p>
+    <%= post_comment.user.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+
+    <% if post_comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "削除", lanobe_post_comment_path(post_comment.lanobe, post_comment), method: :delete, remote: true %>
+      </div>
+    <% end %>
+
+  <% end %>
+
+<%= form_with(model:[lanobe, @post_comment], remote: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
