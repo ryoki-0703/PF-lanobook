@@ -10,25 +10,16 @@
     <%= link_to "削除", lanobe_path(@lanobe), method: :delete %>
   <% end %>
 
-  <% if @lanobe.favorited_by?(current_user) %>
-    <p>
-      <%= link_to lanobe_favorites_path(@lanobe), method: :delete do %>
-        ♥<%= @lanobe.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to lanobe_favorites_path(@lanobe), method: :post do %>
-        ♡<%= @lanobe.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+  <div id= "favorite_<%= @lanobe.id %>">
+    <%= render "favorite", lanobe: @lanobe %>
+  </div>
+
 </div>
 
 <div class="comments">
   <p>コメント件数：<%= @lanobe.post_comments.count %></p>
   <% @lanobe.post_comments.each do |post_comment| %>
-    <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg" %></p>
+    <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 15, 15, fallback: "no_image.jpg" %></p>
     <%= post_comment.user.name %>
     <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
     <% if post_comment.user == current_user %>

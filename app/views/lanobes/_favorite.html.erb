@@ -1,0 +1,13 @@
+<% if lanobe.favorited_by?(current_user) %>
+    <p>
+      <%= link_to lanobe_favorites_path(lanobe), method: :delete, remote: true do %>
+        ♥<%= lanobe.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to lanobe_favorites_path(lanobe), method: :post, remote: true do %>
+        ♡<%= lanobe.favorites.count %>
+      <% end %>
+    </p>
+<% end %>
