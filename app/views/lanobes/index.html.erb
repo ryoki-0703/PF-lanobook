@@ -7,12 +7,12 @@
 <% @lanobes.each do |lanobe| %>
   <div>
     <%= link_to lanobe_path(lanobe.id) do %>
-      <%= attachment_image_tag lanobe, :image, size: "300x300" %>
+      <%= attachment_image_tag lanobe, :image, size: "300x300", fallback: "no-image2.jpg" %>
     <% end %>
-    <p>投稿ユーザー画像：<%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></p>
     <p>タイトル：<%= lanobe.title %></p>
     <p>説明：<%= lanobe.introduction %></p>
     <p>ジャンル : <%= lanobe.category.name %></p>
+    <p><%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></p>
     <p>ユーザーネーム：<%= lanobe.user.name %></p>
     <p>コメント : <%= lanobe.post_comments.count %></p>
   </div>

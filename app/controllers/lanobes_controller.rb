@@ -7,8 +7,12 @@ class LanobesController < ApplicationController
   def create
     @lanobe = Lanobe.new(lanobe_params)
     @lanobe.user_id = current_user.id
-    @lanobe.save!
-    redirect_to lanobes_path
+    if @lanobe.save
+      redirect_to lanobes_path
+    else
+      @categories = Category.all
+      render :new
+    end
   end
 
   def index

@@ -20,16 +20,17 @@
 
 /*global $*/
 
-$(function(){
-$('.slider').slick({
-    autoplay:true,
+
+$(function() {
+  $(".full-screen").slick({
     centerMode: true,
     centerPadding: '5%',
     dots: true,
-    focusOnSelect: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 1000,
     infinite: true,
-    touchMove: true,
-    prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="left:35px;">Previous</button>',
-    nextArrow: '<button class="slick-next slick-arrow" aria-label="Previous" type="button" style="right:35px;">Next</button>'
+  });
 });
-});
+
+

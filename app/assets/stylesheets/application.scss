@@ -15,59 +15,66 @@
  */
 
  @import "bootstrap";
-.sliderArea {
-  background: #fff;
-  overflow: hidden;
-}
-.sliderWide {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 30px 0;
-}
-.sliderWide .slick-arrow {
- // opacity: 0;
-  transition-duration: 0.3s;
-}
-.sliderWide:hover .slick-arrow {
-  opacity: 1;
-}
-.slider {
-  max-width: 400px;
-  margin: 0 auto;
+
+html, body {
+  margin: 0;
   padding: 0;
 }
-.slider .slick-list {
-  overflow: visible;
+* {
+  box-sizing: border-box;
 }
-.slider .slick-track {}
-.slider .slick-slide {
-  padding: 0 10px;
-  opacity: .5;
-  transition-duration: 0.3s;
+.sliderArea {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 25px;
 }
-.slider .slick-slide.slick-current {
-  opacity: 1;
+.sliderArea.w300 {
+  max-width: 300px;
 }
-.slider .slick-slide a {
-  display: block;
-}
-.slider .slick-slide a:hover {
-  display: block;
-  opacity: .7;
-}
-.slider img {
-  height: auto;
-  width: 100%;
+
+.slick-slide img {
+  width: auto;
+  max-height: 300px;
+  margin: 0 auto;
+  object-fit: cover;
 }
 .slick-prev, .slick-next {
   z-index: 1;
 }
-.slick-dots {
-  bottom: -33px;
+.slick-prev:before, .slick-next:before {
+  color: #000;
 }
-.slick-prev {
-    left: 35px;
+.slick-slide {
+  transition: all ease-in-out .3s;
+  opacity: 1;
+
+
+  display: inline-block; /* ここがポイント */
 }
-.slick-next {
-    right: 35px;
+.slick-active {
+  opacity: 1;
+}
+.slick-current {
+  opacity: 1;
+}
+.thumb {
+  margin: 20px 0 0;
+}
+.thumb .slick-slide {
+  cursor: pointer;
+}
+.thumb .slick-slide:hover {
+  opacity: .7;
+}
+
+/*====================================================================
+.full-screen
+====================================================================*/
+
+.full-screen .slick-list {
+  overflow: visible;
+}
+.full-screen.slider {
+  max-width: 370px;
+  margin: 0 auto;
 }

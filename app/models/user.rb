@@ -10,7 +10,6 @@ class User < ApplicationRecord
   attachment :profile_image
 
   #バリデーション
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 10 }
   validates :email, presence: true
-  validates :encrypted_password, length: { is: 6 }
 end

@@ -1,3 +1,12 @@
+<% if @lanobe.errors.any? %>
+  <%= @lanobe.errors.full_messages.uniq.count %>件のエラーが発生しました
+  <% @lanobe.errors.full_messages.uniq.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+
+
 <h1>画像投稿フォーム</h1>
 <%= form_with model: @lanobe, local:true do |f| %>
   <h4>画像</h4>
