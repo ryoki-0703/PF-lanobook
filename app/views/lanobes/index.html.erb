@@ -12,7 +12,7 @@
     <p>タイトル：<%= lanobe.title %></p>
     <p>説明：<%= lanobe.introduction %></p>
     <p>ジャンル : <%= lanobe.category.name %></p>
-    <p><%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></p>
+    <p><%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50' %></p>
     <p>ユーザーネーム：<%= lanobe.user.name %></p>
     <p>コメント : <%= lanobe.post_comments.count %></p>
   </div>

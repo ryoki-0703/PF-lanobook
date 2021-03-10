@@ -22,15 +22,23 @@
 
 
 $(function() {
+  console.log("hoge")
   $(".full-screen").slick({
-    centerMode: true,
+    //centerMode: true,
     centerPadding: '5%',
     dots: true,
     autoplay: true,
     autoplaySpeed: 3000,
     speed: 1000,
     infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1
   });
+  $("lanobe-image").hover(function(){
+       $(this).fadeTo("4000",0.3); // マウスオーバーで透明度を30%にする
+    },function(){
+       $(this).fadeTo("4000",1.0); // マウスアウトで透明度を100%に戻す
+    });
 });
 
 
