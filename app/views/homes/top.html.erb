@@ -4,12 +4,12 @@
     <div class="sliderArea">
     <div class="full-screen slider">
       <% @lanobes.each do |lanobe| %>
-        <div class="screen-size">
-          <%= link_to lanobe_path(lanobe.id) do %>
+        <%= link_to lanobe_path(lanobe.id) do %>
+          <div class="lanobe-gazou">
             <%= attachment_image_tag lanobe, :image, fallback: "no-image2.jpg" %>
-            <p><%= lanobe.title %></p>
-          <% end %>
-        </div>
+            <h5 class="pl-3"><%= lanobe.title %></h5>
+          </div>
+        <% end %>
       <% end %>
     </div>
     </div>
@@ -20,15 +20,16 @@
       <% @favorite_ranks.each do |lanobe| %>
         <div class="flex-row ml-4">
           <div class="pl-2 py-4">
-            <%= link_to lanobe_path(lanobe.id) do %>
-              <div class="lanobe-image">
+            <%= link_to lanobe_path(lanobe.id),class: "no-underline" do %>
+              <div class="lanobe-gazou">
                 <%= attachment_image_tag lanobe, :image, size: "200x235", fallback: "no-image2.jpg" %>
                 <p><%= lanobe.title %></p>
               </div>
             <% end %>
             <div class="user-name">
-              <p><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
-              <%= lanobe.user.name %>♥<%= lanobe.favorites.count %></p>
+              <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %></p>
+              <p class="pl-3"><%= lanobe.user.name %></p>
+              <p class="pl-5"><i class="fas fa-heart pr-1 hert"></i><%= lanobe.favorites.count %></p>
             </div>
           </div>
         </div>
@@ -45,14 +46,15 @@
         <div class="col-md-2">
           <div class="px-4 py-4">
             <%= link_to lanobe_path(lanobe.id) do %>
-              <div class="lanobe-image">
+              <div class="lanobe-gazou">
                 <%= attachment_image_tag lanobe, :image, size: "195x230", fallback: "no-image2.jpg" %>
                 <p><%= lanobe.title %></p>
               </div>
             <% end %>
             <div class="user-name">
-              <p><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
-              <%= lanobe.user.name %><i class="far fa-comment"></i><%= lanobe.post_comments.count %></p>
+              <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
+              <p class="pl-3"><%= lanobe.user.name %></p>
+              <p class="pl-5"><i class="far fa-comment pl-1"></i><%= lanobe.post_comments.count %></p>
             </div>
           </div>
         </div>
@@ -63,9 +65,15 @@
     </div>
   </div>
 
-  <div class="bg-light rounded-lg mt-5"><h4 class="pt-4 pl-5">ジャンル
+  <div class="bg-light rounded-lg mt-5 pb-3"><h4 class="pt-4 pl-5 pb-3">ジャンル</h4>
     <div class="row">
-
+      <div class="btn-group btn-group-lg pl-5" role="group" aria-label="Basic example">
+        <%= link_to "ファンタジー", lanobes_path(category_id: "1"), class: "btn btn-outline-secondary" %>
+        <%= link_to "バトル・アクション", lanobes_path(category_id: "2"), class: "btn btn-outline-secondary" %>
+        <%= link_to "SF", lanobes_path(category_id: "3"), class: "btn btn-outline-secondary" %>
+        <%= link_to "青春xラブコメ", lanobes_path(category_id: "4"), class: "btn btn-outline-secondary" %>
+        <%= link_to "ギャグ・コメディー", lanobes_path(category_id: "5"), class: "btn btn-outline-secondary" %>
+      </div>
     </div>
   </div>
 

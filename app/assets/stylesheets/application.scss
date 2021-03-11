@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import "bootstrap";
+@import "bootstrap";
 
 /*====================================================================
 .Top slick
@@ -39,24 +39,34 @@ html, body {
 
 .slick-slide img {
   width: 100%;
-  height: 300px;
-   object-fit: cover;
+  height: 350px;
+  object-fit: cover;
 }
 
 .slick-arrow {
-    z-index:20; /* 矢印画像を最前面へ */
-  }
+  z-index:20; /* 矢印画像を最前面へ */
+}
+
 .slide-arrow{
   position: absolute;
   top: 40%;
 }
-.full-screen .slick-prev{
-  left: 30px;
 
+.full-screen{
+  .slick-prev{
+    left: 40px;
+    &::before{
+      font-size: 45px;
+    }
+  }
+  .slick-next{
+    right: 60px;
+    &::before{
+      font-size: 45px;
+    }
+  }
 }
-.full-screen .slick-next{
-  right: 30px;
-}
+
 
 /*====================================================================
 .font
@@ -64,4 +74,17 @@ html, body {
 
 .hert {
   color: #ff0000;
+}
+
+/*====================================================================
+.投稿画像
+====================================================================*/
+
+.lanobe-gazou {
+  text-decoration:none !important;
+  color: #000000;
+}
+
+.user-name p {
+  display: inline-block;
 }
