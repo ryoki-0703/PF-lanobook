@@ -76,15 +76,37 @@ html, body {
   color: #ff0000;
 }
 
+.form-control {
+  display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
 /*====================================================================
 .投稿画像
 ====================================================================*/
 
-.lanobe-gazou {
+.no-underline {
   text-decoration:none !important;
   color: #000000;
 }
 
 .user-name p {
   display: inline-block;
+}
+
+/*====================================================================
+.フッター
+====================================================================*/
+
+footer#footer {
+  width: 100%;
+  background: #999;
+  color: white;
+  padding: 3rem 0;
 }
