@@ -70,3 +70,8 @@ gem 'pry-rails'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'rails-i18n'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
