@@ -52,7 +52,7 @@
             </li>
             <li class="nav log_in mr-3">
               <%= link_to new_user_session_path, class: "nav-link" do %>
-                <i class="fas fa-sign-in-alt fa-lg mr-1"></i>サインイン
+                <i class="fas fa-sign-in-alt fa-lg mr-1"></i>ログイン
               <% end %>
             </li>
           <% end %>
@@ -61,7 +61,7 @@
     </div>
   </nav>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-white pb-3 pt-3" style="background-color: #EDF7FF;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white pb-3 pt-3 border-bottom" style="background-color: #EDF7FF;">
     <div class="w-100">
       <ul class="navbar-nav mr-auto">
 
@@ -95,7 +95,7 @@
           <%= form_with url:search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do |f| %>
             <%= f.select "search[model]", options_for_select({ "User" => "user", "Lanobe" => "lanobe" }) %>
             <%= f.select "search[how]", options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
-            <%= f.text_field "search[value]", placeholder: "\uf002 ユーザー名 タイトル名で検索", class: "form-control mr-sm-2 ml-1 rounded-pill", size: "35x20"%>
+            <%= f.text_field "search[value]", placeholder: "\uf002 ユーザー名 タイトル名で検索", class: "form-control mr-sm-2 ml-1 rounded-pill", size: "35x20", style: "background-color:#e6e6e6;"%>
             <%= f.submit "検索", class: "btn btn-outline-success my-2 my-sm-0  ml-2 rounded-pill" %>
           <% end %>
         </li>
