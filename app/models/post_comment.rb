@@ -3,5 +3,5 @@ class PostComment < ApplicationRecord
   belongs_to :lanobe
 
   #バリデーション
-  validates :comment, presence: true, length: { maximum: 50 }
+  validates :comment, presence: true, length: { maximum: 200 }
 end

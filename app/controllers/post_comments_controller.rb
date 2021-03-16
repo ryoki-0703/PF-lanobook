@@ -1,12 +1,9 @@
 class PostCommentsController < ApplicationController
   def create
     @lanobe = Lanobe.find(params[:lanobe_id])
-    @post_comment = PostComment.new
-    comment = current_user.post_comments.new(post_comment_params)
-    comment.lanobe_id = @lanobe.id
-    comment.save
-    @errors = comment.errors.full_messages
-
+    @post_comment = current_user.post_comments.new(post_comment_params)
+    @post_comment.lanobe_id = @lanobe.id
+    @post_comment.save
   end
 
   def destroy

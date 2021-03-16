@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="bg-light rounded-lg mt-5 ml-4 mr-4"><h4 class="pt-4 pl-4">ランキング<i class="fas fa-heart pl-2 fa-lg hert"></i></h4>
+  <div class="bg-light rounded-lg mt-5 ml-4 mr-4"><h4 class="pt-4 pl-4">ランキング<i class="far fa-thumbs-up pl-2 fa-lg"></i></h4>
     <div class="row">
       <% @favorite_ranks.each do |lanobe| %>
         <div class="flex-row ml-4">
@@ -29,7 +29,7 @@
             <div class="user-name">
               <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %></p>
               <p class="pl-3"><%= lanobe.user.name %></p>
-              <p class="pl-5"><i class="fas fa-heart pr-1 hert"></i><%= lanobe.favorites.count %></p>
+              <p class="pl-5"><i class="far fa-thumbs-up pr-1"></i><%= lanobe.favorites.count %></p>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
           <div class="px-4 py-4">
             <%= link_to lanobe_path(lanobe.id), class: "no-underline" do %>
               <div class="lanobe-gazou">
-                <%= attachment_image_tag lanobe, :image, size: "195x230", fallback: "no-image2.jpg" %>
+                <%= attachment_image_tag lanobe, :image, size: "200x235", fallback: "no-image2.jpg" %>
                 <p><%= lanobe.title %></p>
               </div>
             <% end %>

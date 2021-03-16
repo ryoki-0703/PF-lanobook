@@ -1,24 +1,23 @@
-<p><%= lanobe.post_comments.count %>件コメント</p>
-<% if errors.present? %>
-  <% errors.each do |error| %>
-  <%= error %>
-  <% end %>
-
+<h4 class="pb-3">コメント <%= lanobe.post_comments.count %>件</h4>
+<% if @post_comment.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @post_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-  <% lanobe.post_comments.each do |post_comment| %>
-    <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 25, 25, fallback: "no_image.jpg" %></p>
-    <%= post_comment.user.name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
 
-    <% if post_comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "削除", lanobe_post_comment_path(post_comment.lanobe, post_comment), method: :delete, remote: true %>
-      </div>
-    <% end %>
-
+<% lanobe.post_comments.each do |post_comment| %>
+  <p class="d-inline-block"><%= attachment_image_tag post_comment.user, :profile_image, :fill, 35, 35, fallback: "no_image.jpg", class: "rounded-circle" %></p>
+  <p class="d-inline-block ml-3 mr-5"><%= post_comment.user.name %></p>
+  <p class="d-inline-block ml-2"><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+  <br><p class="d-inline-block ml-5"><%= post_comment.comment %></p>
+  <% if post_comment.user == current_user %>
+    <div class="d-inline-block">
+      <%= link_to "削除", lanobe_post_comment_path(post_comment.lanobe, post_comment), method: :delete, remote: true %>
+    </div>
   <% end %>
-
-<%= form_with(model:[lanobe, @post_comment], remote: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+  <br>
 <% end %>

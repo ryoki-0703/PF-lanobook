@@ -12,6 +12,6 @@ class Lanobe < ApplicationRecord
 
   #バリデーション
   validates :title, presence: true, length: { maximum: 20 }
-  validates :introduction, presence: true, length: { maximum: 50 }
+  validates :introduction, presence: true, length: { maximum: 300 }
   validates :category_id, presence: true
 end
