@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_105025) do
+ActiveRecord::Schema.define(version: 2021_03_17_075509) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2021_03_04_105025) do
     t.integer "lanobe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "follow_relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "following_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_follow_relationships_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_follow_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_follow_relationships_on_following_id"
   end
 
   create_table "lanobes", force: :cascade do |t|
