@@ -27,8 +27,10 @@
               </div>
             <% end %>
             <div class="user-name">
-              <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %></p>
-              <p class="pl-3"><%= lanobe.user.name %></p>
+              <%= link_to user_path(lanobe.user.id) do %>
+                <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %></p>
+                <p class="pl-3"><%= lanobe.user.name %></p>
+              <% end %>
               <p class="pl-5"><i class="far fa-thumbs-up pr-1"></i><%= lanobe.favorites.count %></p>
             </div>
           </div>
@@ -52,8 +54,10 @@
               </div>
             <% end %>
             <div class="user-name">
-              <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
-              <p class="pl-3"><%= lanobe.user.name %></p>
+              <%= link_to user_path(lanobe.user.id) do %>
+                <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
+                <p class="pl-3"><%= lanobe.user.name %></p>
+              <% end %>
               <p class="pl-5"><i class="far fa-comment pl-1"></i><%= lanobe.post_comments.count %></p>
             </div>
           </div>

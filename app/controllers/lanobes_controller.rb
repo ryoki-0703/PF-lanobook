@@ -35,9 +35,12 @@ class LanobesController < ApplicationController
   end
 
   def update
-    lanobe = Lanobe.find(params[:id])
-    lanobe.update(lanobe_params)
-    redirect_to lanobe_path(lanobe)
+    @lanobe = Lanobe.find(params[:id])
+    if @lanobe.update(lanobe_params)
+      redirect_to lanobe_path(@lanobe)
+    else
+      render :edit
+    end
   end
 
   def destroy

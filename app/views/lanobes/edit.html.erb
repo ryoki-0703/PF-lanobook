@@ -1,11 +1,37 @@
-<h1>編集画面</h1>
+<% if @lanobe.errors.any? %>
+  <%= @lanobe.errors.full_messages.uniq.count %>件のエラーが発生しました
+  <% @lanobe.errors.full_messages.uniq.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<div class="pl-3 pt-2">
+  <div style="border: #90ee90 solid 1px; border-left: #3cb371 solid 13px; padding: 10px 5px; font-size: 100%; width: 12%;">
+    <h2>編集</h2>
+  </div>
+</div>
+
 <%= form_with model:@lanobe, local: true do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>説明</h4>
-  <%= f.text_area :introduction %>
-  <%= attachment_image_tag @lanobe, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
-  <%= f.submit '保存' %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5 pt-3">
+      <%= attachment_image_tag @lanobe, :image, :fill, 400, 450, fallback: "no_image.jpg"%>
+      <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+    </div>
+
+    <div class="col-md-6 pl-5">
+      <div class="title pb-4">
+        <h5>タイトル</h5>
+        <%= f.text_field :title, size: 60 %>
+      </div>
+      <div class="introduction pb-3">
+        <h5>感想</h5>
+        <%= f.text_area :introduction, size: "60x10" %>
+      </div>
+      <div class="submit pt-4">
+        <%= f.submit '保存', class: "btn btn-success btn-lg w-75" %>
+      </diV>
+    </div>
+
+  </div>
 <% end %>
