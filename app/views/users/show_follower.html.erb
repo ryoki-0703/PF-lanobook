@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <h3>フォロワー</h3>
+  </div>
+
+  <div class="row">
+    <% @user.followers.each do |user| %>
+      <table>
+        <tr>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg", size: '70x70', class: "rounded-circle" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= user.name %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+
+</div>

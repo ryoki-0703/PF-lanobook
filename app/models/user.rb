@@ -30,6 +30,6 @@ class User < ApplicationRecord
 
   #ユーザーのフォローを解除する
   def unfollow(other_user)
-    self.following_relationships.find_by(following_id: other_user.id).destroy
+    self.following_relationships.find_by(following_id: other_user.id).destroy!
   end
 end
