@@ -1,4 +1,6 @@
 class LanobesController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def new
     @lanobe = Lanobe.new
     @categories = Category.all
@@ -20,9 +22,20 @@ class LanobesController < ApplicationController
       @categroy = Category.find(params[:category_id])
       @lanobes =Lanobe.where(category_id: params[:category_id]).page(params[:page]).reverse_order
     else
-      @lanobes =Lanobe.page(params[:page]).reverse_order
+      @lanobes = Lanobe.page(params[:page]).reverse_order
     end
 
+    # あとやるべきこと: ここより下で favorites ( いいね ) の数で sort の処理を追加する
+    # 今のところできていること: category で絞り込みをして @lanobes に格納する
+    if params[:sort] == "recent"
+      @lanobes = @lanobes.order(created_at: "DESC") #新着順
+    elsif params[:sort] == "favorites"
+      @lanobes = @lanobes.find(Favorite.group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)) #いいね順
+    elsif params[:sort] == "post_comments"
+      @lanobes = @lanobes.find(PostComment.group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)) #コメント順
+    else
+      @lanobes = @lanobes.page(params[:page]).reverse_order
+    end
   end
 
   def show
