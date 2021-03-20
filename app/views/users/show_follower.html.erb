@@ -1,25 +1,20 @@
 <div class="container">
-  <div class="row">
-    <h3>フォロワー</h3>
-  </div>
+  <h3 class="text-center pt-3 pb-4">フォロワー</h3>
 
-  <div class="row">
-    <% @user.followers.each do |user| %>
-      <table>
-        <tr>
-          <td>
-            <%= link_to user_path(user.id) do %>
-              <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg", size: '70x70', class: "rounded-circle" %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to user_path(user.id) do %>
-              <%= user.name %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-    <% end %>
-  </div>
+  <% @user.followers.each do |user| %>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-2 border-bottom border-top p-2">
+        <%= link_to user_path(user.id) do %>
+          <%= attachment_image_tag user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size: '80x80', class: "rounded-circle" %>
+        <% end %>
+      </div>
+      <div class="col-md-4 border-bottom border-top p-2">
+        <%= link_to user_path(user.id) do %>
+          <h4 class="pt-4"><%= user.name %></h4>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
 </div>

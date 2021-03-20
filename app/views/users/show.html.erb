@@ -1,29 +1,32 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-5">
-      <h3 class="profile-name"><%= @user.name %></h3>
-      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+    <div class="col-md-6">
+      <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: '300x300', class: "rounded-circle mt-5" %>
+      <br><h3 class="d-inline-block ml-5 mr-5 mt-3"><%= @user.name %></h3>
       <% if @user.id == current_user.id %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+        <p class="d-inline-block"><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
       <% end %>
 
-      <div id="follow_form">
+      <div id="follow_form" class="ml-4 mt-3">
         <%= render "follow_info", user: @user %>
       </div>
     </div>
 
-    <div class="col-md-7">
-      <% @lanobes.each do |lanobe| %>
-        <%= link_to lanobe_path(lanobe.id) do %>
-          <%= attachment_image_tag lanobe, :image, size: "300x300" %>
+    <div class="col-md-6 mt-5">
+      <div class="row">
+        <% @lanobes.each do |lanobe| %>
+          <div class= "col-md-6">
+            <%= link_to lanobe_path(lanobe.id) do %>
+              <%= attachment_image_tag lanobe, :image, :fill, 220, 270, fallback: "no-image2.jpg", size: '220x270' %>
+            <% end %>
+            <p class="ml-2"><%= lanobe.title %></p>
+            <p class="ml-2"><%= lanobe.category.name %></p>
+            <p class="d-inline-block ml-2"><i class="far fa-thumbs-up pr-1"></i><%= lanobe.favorites.count %></p>
+            <p class="d-inline-block ml-4 mb-5"><i class="far fa-comment pr-1"></i><%= lanobe.post_comments.count %></p>
+          </div>
         <% end %>
-        <p>タイトル：<%= lanobe.title %></p>
-        <p>説明：<%= lanobe.introduction %></p>
-        <p>ユーザーネーム：<%= lanobe.user.name %></p>
-      <% end %>
-
-
+      </div>
     </div>
 
   </div>
