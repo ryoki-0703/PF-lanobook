@@ -36,7 +36,7 @@
             <div class="d-inline-block ml-5">
               <h5><%= lanobe.title %></h5>
               <%= link_to user_path(lanobe.user.id) do %>
-                <p class="d-inline-block mt-4"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50', class: "rounded-circle" %></p>
+                <p class="d-inline-block mt-4"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg", size: '50x50', class: "rounded-circle" %></p>
                 <p class="d-inline-block ml-2"><%= lanobe.user.name %></p>
               <% end %>
               <br><p class="d-inline-block mt-2"><i class="far fa-thumbs-up fa-lg pr-1"></i><%= lanobe.favorites.count %></p>
@@ -62,7 +62,7 @@
               <div class="d-inline-block ml-5">
                 <h5><%= lanobe.title %></h5>
                 <%= link_to user_path(lanobe.user.id) do %>
-                  <p class="d-inline-block mt-4"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50', class: "rounded-circle" %></p>
+                  <p class="d-inline-block mt-4"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg", size: '50x50', class: "rounded-circle" %></p>
                   <p class="d-inline-block ml-2"><%= lanobe.user.name %></p>
                 <% end %>
                 <br><p class="d-inline-block mt-2"><i class="far fa-thumbs-up fa-lg pr-1"></i><%= lanobe.favorites.count %></p>
