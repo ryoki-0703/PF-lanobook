@@ -5,16 +5,13 @@
   <% end %>
 <% end %>
 
-<div class="pl-3 pt-2">
-  <div style="border: #90ee90 solid 1px; border-left: #3cb371 solid 13px; padding: 10px 5px; font-size: 100%; width: 12%;">
-    <h2>編集</h2>
-  </div>
-</div>
 
+
+<h2 class="ml-5 mb-1 mt-3 mb-3">編集</h2>
 <%= form_with model:@lanobe, local: true do |f| %>
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-5 pt-3">
+    <div class="col-md-5 mt-3">
       <%= attachment_image_tag @lanobe, :image, :fill, 400, 450, fallback: "no_image.jpg"%>
       <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
     </div>
