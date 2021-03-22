@@ -3,22 +3,22 @@
   <div class="row mt-4">
     <div class="col-md-6">
       <% if @category.blank? %>
-        <h2>投稿一覧</h2>
+        <h2><i class="fas fa-book-open mr-2"></i>投稿一覧</h2>
         <h3 class="d-inline-block mt-3"><%= @lanobe_count %></h3> 件
       <% elsif !@category.nil?%>
         <h2><%= @category.name %></h2>
         <h3 class="d-inline-block mt-3"><%= @lanobe_count %></h3> 件
       <% end %>
     </div>
-    <div class="col-md-6 mt-5">
+    <h6 class="col-md-6 mt-5">
       <%= form_with model: @lanobe, method: "get", local: true do |f| %>
         <%= hidden_field_tag :category_id, params[:category_id] %>
-        <%= f.radio_button :sort, "recent" %>新着順
-        <%= f.radio_button :sort, "favorites" %>いいね順
-        <%= f.radio_button :sort, "post_comments" %>コメント順
-        <%= f.submit '並び替え', class: "btn btn-success"%>
+        <%= f.radio_button :sort, "recent", style: "transform:scale(2.0)", class: "mr-2" %>新着順
+        <%= f.radio_button :sort, "favorites", style: "transform:scale(2.0)", class: "ml-2 mr-2" %>いいね順
+        <%= f.radio_button :sort, "post_comments", style: "transform:scale(2.0)", class: "ml-2 mr-2" %>コメント順
+        <%= f.submit '並び替え', class: "btn btn-success bt-lg ml-2"%>
       <% end %>
-    </div>
+    </h6>
   </div>
 
   <div class="row mt-1 mb-5">

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :categories
   get '/search' => 'search#search'
   root to: 'homes#top'
-  devise_for :users
+  devise_for :users do
+    get 'users/sign_up' => 'devise/registrations#new'
+  end
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get :following, :followers
+    end
+    collection do
+      get :favorites
     end
   end
   resources :follow_relationships, only: [:create, :destroy]

@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      lanobe:
+        title: タイトル
+        introduction: 感想
+        category: ジャンル
+
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :lanobes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_lanobes, through: :favorites, source: :lanobe
 
   has_many :following_relationships,foreign_key: "follower_id", class_name: "FollowRelationship",  dependent: :destroy
   has_many :followings, through: :following_relationships
