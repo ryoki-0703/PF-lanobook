@@ -20,3 +20,23 @@
 
 /*global $*/
 
+document.addEventListener("turbolinks:load", function () {
+  $(function () {
+    $(".lanobe-gazou").ready(
+    function(){
+      $("a img") .hover(function(){
+         $(this).fadeTo("0.01",0.3); // マウスオーバーで透明度を30%にする
+      },function(){
+         $(this).fadeTo("0.1",1.0); // マウスアウトで透明度を100%に戻す
+      });
+    });
+
+    $('#lanobe_image').on('change', function (e) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $("#preview").attr('src', e.target.result);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    });
+  });
+});

@@ -18,6 +18,7 @@ class LanobesController < ApplicationController
   end
 
   def index
+    # params[:sort] = "recent"
     if !params[:category_id].blank?
       @category = Category.find(params[:category_id])
       @lanobes =Lanobe.where(category_id: params[:category_id]).page(params[:page]).reverse_order
