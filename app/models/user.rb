@@ -18,6 +18,7 @@ class User < ApplicationRecord
   #バリデーション
   validates :name, presence: true, length: { maximum: 10 }
   validates :email, presence: true
+  # validates :encrypted_password, presence: true, length: {in: 2..10}
 
   #すでにフォロー済みであればture返す
   def following?(other_user)
