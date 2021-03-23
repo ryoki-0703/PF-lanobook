@@ -15,10 +15,10 @@
   </div>
 
   <div class="col-md-5 pt-5">
-    <h2 class="pb-5"><%= @lanobe.title %></h2>
-    <p class="pt-3"><%= @lanobe.introduction %></p>
-    <h5 class="pt-3 pb-5">ジャンル : <%= @lanobe.category.name %></h5>
-    <div id= "favorite_<%= @lanobe.id %>" class="text-right pr-5">
+    <h2 class="mb-5"><%= @lanobe.title %></h2>
+    <p class="mt-3 mb-5"><%= @lanobe.introduction %></p>
+    <h5 class="mt-5 mb-5 mr-5 d-inline-block">ジャンル : <%= @lanobe.category.name %></h5>
+    <div id= "favorite_<%= @lanobe.id %>" class="text-right d-inline-block ml-5">
       <%= render "lanobes/favorite", lanobe: @lanobe %>
     </div>
     <div class="comments pt-5" id="comment_<%= @lanobe.id %>">
