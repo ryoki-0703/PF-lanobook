@@ -15,10 +15,12 @@
         <% end %>
       </div>
       <div class="col-md-4 border-bottom border-top pt-4">
-        <% if user_signed_in? && user != current_user%>
-          <%= form_with(model: current_user.following_relationships.find_by(following_id: user.id), local: true, method: :delete) do |f| %>
-            <%= f.hidden_field :following_id %>
-            <%= f.submit "フォローを外す", class: "btn btn-danger" %>
+        <% if @user.id == current_user.id %>
+          <% if user_signed_in? && user != current_user%>
+            <%= form_with(model: current_user.following_relationships.find_by(following_id: user.id), local: true, method: :delete) do |f| %>
+              <%= f.hidden_field :following_id %>
+              <%= f.submit "フォローを外す", class: "btn btn-danger" %>
+            <% end %>
           <% end %>
         <% end %>
       </div>

@@ -43,4 +43,13 @@ class User < ApplicationRecord
     end
   end
 
+  def favorite_destroy(lanobe_id)
+    favorite = favorites.find_by(lanobe_id: lanobe_id)
+    favorite.destroy # favoriteを削除すること　(trueをかえす)
+  end
+
+  def writes?(lanobe)
+    lanobe.user == self
+  end
+
 end

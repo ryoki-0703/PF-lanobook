@@ -7,7 +7,6 @@ class FavoritesController < ApplicationController
 
   def destroy
     @lanobe = Lanobe.find(params[:lanobe_id])
-    favorite = current_user.favorites.find_by(lanobe_id: @lanobe.id)
-    favorite.destroy
+    current_user.favorite_destroy(@lanobe.id)
   end
 end

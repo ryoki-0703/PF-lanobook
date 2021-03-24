@@ -10,6 +10,10 @@ class Lanobe < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  def written_by?(current_user)
+    user == current_user
+  end
+
   #バリデーション
   validates :title, presence: true, length: { maximum: 20 }
   validates :introduction, presence: true, length: { maximum: 300 }

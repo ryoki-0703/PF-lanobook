@@ -71,6 +71,7 @@ gem 'pry-rails'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem 'database_cleaner'
 
 gem 'dotenv-rails'
 group :production do

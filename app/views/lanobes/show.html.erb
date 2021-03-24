@@ -8,7 +8,8 @@
       <h5 class="d-inline-block ml-3 mr-5"><%= @lanobe.user.name %></h5>
       <p class="d-inline-block ml-5"><%= @lanobe.created_at.strftime('%Y/%m/%d') %></p>
     </div>
-    <% if @lanobe.user == current_user %>
+    <% #if @lanobe.written_by?(current_user) %>
+    <% if current_user.writes?(@lanobe) %>
       <%= link_to "編集", edit_lanobe_path(@lanobe), class: "btn btn-outline-info" %>
       <%= link_to "削除", lanobe_path(@lanobe), method: :delete, class: "btn btn-outline-danger" %>
     <% end %>
@@ -17,7 +18,7 @@
   <div class="col-md-5 pt-5">
     <h2 class="mb-5"><%= @lanobe.title %></h2>
     <p class="mt-3 mb-5"><%= @lanobe.introduction %></p>
-    <h5 class="mt-5 mb-5 mr-5 d-inline-block">ジャンル : <%= @lanobe.category.name %></h5>
+    <h5 class="mt-5 mr-5 d-inline-block">ジャンル : <%= @lanobe.category.name %></h5>
     <div id= "favorite_<%= @lanobe.id %>" class="text-right d-inline-block ml-5">
       <%= render "lanobes/favorite", lanobe: @lanobe %>
     </div>

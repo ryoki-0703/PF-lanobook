@@ -11,6 +11,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       expect(lanobe).to be_valid  # lanobe.valid? が true になればパスする
     end
   end
@@ -23,6 +25,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       lanobe.title = ""
       expect(lanobe).to be_invalid
     end
@@ -34,6 +38,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       lanobe.introduction = ""
       expect(lanobe).to be_invalid
     end
@@ -45,7 +51,7 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
-      lanobe.category_id = ""
+      lanobe.user_id = user.id
       expect(lanobe).to be_invalid
     end
 
@@ -56,7 +62,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
-      lanobe.category_id = "1"
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       expect(lanobe).to be_valid
     end
   end
@@ -69,6 +76,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       lanobe.title = "111111111122222222233"
       expect(lanobe).to be_invalid
     end
@@ -80,6 +89,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       lanobe.title = "1"
       expect(lanobe).to be_valid
     end
@@ -91,6 +102,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       lanobe.introduction = "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
                              111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
                              111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -105,6 +118,8 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       category.save
 
       lanobe = build(:lanobe)
+      lanobe.user_id = user.id
+      lanobe.category_id = category.id
       lanobe.introduction = "1"
       expect(lanobe).to be_valid
     end
