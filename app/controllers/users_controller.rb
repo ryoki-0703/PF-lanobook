@@ -18,14 +18,14 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user =User.find(params[:id])
-    @users =@user.followings.page(params[:page]).per(5)
+    @user = User.find(params[:id])
+    @users = @user.followings.page(params[:page]).per(5)
     render 'show_follow'
   end
 
   def followers
-    @user =User.find(params[:id])
-    @users =@user.followers.page(params[:page]).per(5)
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(5)
     render 'show_follower'
   end
 
@@ -34,5 +34,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image)
   end
-
 end

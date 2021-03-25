@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe FollowRelationship, "モデルに関するテスト", type: :model do
   context "フォロー、フォロワー" do
     it "ユーザーが存在すればフォローできること" do
@@ -19,6 +18,5 @@ RSpec.describe FollowRelationship, "モデルに関するテスト", type: :mode
       follow_relationship.following_id = nil
       expect(follow_relationship).to be_invalid
     end
-
   end
 end

@@ -5,12 +5,11 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # require 'support/factory_bot'
-require'devise'
+require 'devise'
 require File.expand_path("spec/support/controller_macros.rb")
 require_relative 'support/controller_macros'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
-
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

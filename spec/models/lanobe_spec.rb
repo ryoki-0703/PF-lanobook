@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
   describe "ラノベ投稿" do
     it "title、introduction、categoryが存在すれば登録できること" do
@@ -13,7 +12,7 @@ RSpec.describe Lanobe, "モデルに関するテスト", type: :model do
       lanobe = build(:lanobe)
       lanobe.user_id = user.id
       lanobe.category_id = category.id
-      expect(lanobe).to be_valid  # lanobe.valid? が true になればパスする
+      expect(lanobe).to be_valid # lanobe.valid? が true になればパスする
     end
   end
 

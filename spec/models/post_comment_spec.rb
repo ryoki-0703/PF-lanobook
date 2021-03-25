@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe PostComment, "モデルに関するテスト", type: :model do
   context "コメント投稿" do
     it "commentが存在すれば登録できること" do
@@ -17,7 +16,7 @@ RSpec.describe PostComment, "モデルに関するテスト", type: :model do
       post_comment = build(:post_comment)
       post_comment.user_id = user.id
       post_comment.lanobe_id = lanobe.id
-      expect(post_comment).to be_valid  # post_comment.valid? が true になればパスする
+      expect(post_comment).to be_valid # post_comment.valid? が true になればパスする
     end
   end
 
@@ -73,7 +72,5 @@ RSpec.describe PostComment, "モデルに関するテスト", type: :model do
       post_comment.comment = "1"
       expect(post_comment).to be_valid
     end
-
   end
-
 end
