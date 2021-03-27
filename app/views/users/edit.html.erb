@@ -5,7 +5,7 @@
   <% end %>
 <% end %>
 
-<div class="text-center">
+<div class="text-center mb-4">
   <h2 class="mb-4 mt-3 mr-3">プロフィール編集</h2>
   <%= form_with model:@user, local:true do |f| %>
     <%= attachment_image_tag @user, :profile_image, :fill, 400, 400, fallback: "no-image.jpg", size: '400x400', class: "rounded-circle" %>

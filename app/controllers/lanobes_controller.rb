@@ -19,26 +19,26 @@ class LanobesController < ApplicationController
 
   def index
     category_id = params[:category_id]
-    # sort_id = params[:sort]
-    # page_id = params[:page]
+    sort = params[:sort]
+    page = params[:page]
 
-    if params[:sort].blank?
+    if sort.blank?
       @sort = "recent"
     else
-      @sort = params[:sort]
+      @sort = sort
     end
 
     if category_id.present?
       @category = Category.find(category_id)
-      @lanobes = Lanobe.where(category_id: category_id).page(params[:page]).reverse_order
-      if params[:sort] == "recent" || params[:sort].blank?
+      @lanobes = Lanobe.where(category_id: category_id).page(page).reverse_order
+      if sort == "recent" || sort.blank?
         @lanobes = @lanobes.order(created_at: "DESC") # 新着順
-      elsif params[:sort] == "favorites" # いいね順
-        sort_by_favorite(category_id)
-      elsif params[:sort] == "post_comments" # コメント順
-        sort_by_post_comment(category_id)
+      elsif sort == "favorites" # いいね順
+        sort_by_favorite_with(category_id)
+      elsif sort == "post_comments" # コメント順
+        sort_by_post_comment_with(category_id)
       else
-        @lanobes = @lanobes.page(params[:page]).reverse_order
+        @lanobes = @lanobes.page(page).reverse_order
       end
       lanobes2_count = 0
       if !@lanobes2.nil?
@@ -46,23 +46,15 @@ class LanobesController < ApplicationController
       end
       @lanobe_count = @lanobes.count + lanobes2_count
     else
-      @lanobes = Lanobe.page(params[:page]).reverse_order
-      if params[:sort] == "recent" || params[:sort].blank?
+      @lanobes = Lanobe.page(page).reverse_order
+      if sort == "recent" || sort.blank?
         @lanobes = @lanobes.order(created_at: "DESC") # 新着順
-      elsif params[:sort] == "favorites" # いいね順
-        lanobe_ids = Lanobe.all.pluck(:id)
-        favorite_lanobe_ids = Favorite.where(lanobe_id: lanobe_ids).group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)
-        no_favorite_lanobe_ids = lanobe_ids - favorite_lanobe_ids
-        @lanobes = Lanobe.find(favorite_lanobe_ids)
-        @lanobes2 = Lanobe.find(no_favorite_lanobe_ids) # いいねが無い
-      elsif params[:sort] == "post_comments" # コメント順
-        lanobe_ids = Lanobe.all.pluck(:id)
-        comment_lanobe_ids = PostComment.where(lanobe_id: lanobe_ids).group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)
-        no_comment_lanobe_ids = lanobe_ids - comment_lanobe_ids
-        @lanobes = Lanobe.find(comment_lanobe_ids)
-        @lanobes2 = Lanobe.find(no_comment_lanobe_ids)
+      elsif sort == "favorites" # いいね順
+        sort_by_favorite
+      elsif sort == "post_comments" # コメント順
+        sort_by_post_comment
       else
-        @lanobes = @lanobes.page(params[:page]).reverse_order
+        @lanobes = @lanobes.page(page).reverse_order
       end
       lanobes2_count = 0
       if @lanobes2.present?
@@ -98,7 +90,7 @@ class LanobesController < ApplicationController
 
   private
 
-  def sort_by_favorite(category_id)
+  def sort_by_favorite_with(category_id)
     lanobe_ids = Lanobe.where(category_id: category_id).pluck(:id)
     favorite_lanobe_ids = Favorite.where(lanobe_id: lanobe_ids).group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)
     no_favorite_lanobe_ids = lanobe_ids - favorite_lanobe_ids # いいねが無い
@@ -106,10 +98,26 @@ class LanobesController < ApplicationController
     @lanobes2 = Lanobe.find(no_favorite_lanobe_ids)
   end
 
-  def sort_by_post_comment(category_id)
+  def sort_by_post_comment_with(category_id)
     lanobe_ids = Lanobe.where(category_id: category_id).pluck(:id)
     comment_lanobe_ids = PostComment.where(lanobe_id: lanobe_ids).group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)
     no_comment_lanobe_ids = lanobe_ids - comment_lanobe_ids # コメントが無い
+    @lanobes = Lanobe.find(comment_lanobe_ids)
+    @lanobes2 = Lanobe.find(no_comment_lanobe_ids)
+  end
+
+  def sort_by_favorite
+    lanobe_ids = Lanobe.all.pluck(:id)
+    favorite_lanobe_ids = Favorite.where(lanobe_id: lanobe_ids).group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)
+    no_favorite_lanobe_ids = lanobe_ids - favorite_lanobe_ids
+    @lanobes = Lanobe.find(favorite_lanobe_ids)
+    @lanobes2 = Lanobe.find(no_favorite_lanobe_ids) # いいねが無い
+  end
+
+  def sort_by_post_comment
+    lanobe_ids = Lanobe.all.pluck(:id)
+    comment_lanobe_ids = PostComment.where(lanobe_id: lanobe_ids).group(:lanobe_id).order('count(lanobe_id) desc').pluck(:lanobe_id)
+    no_comment_lanobe_ids = lanobe_ids - comment_lanobe_ids
     @lanobes = Lanobe.find(comment_lanobe_ids)
     @lanobes2 = Lanobe.find(no_comment_lanobe_ids)
   end

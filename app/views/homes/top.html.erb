@@ -7,7 +7,7 @@
         <%= link_to lanobe_path(lanobe.id), class: "no-underline" do %>
           <div class="lanobe-gazou">
             <%= attachment_image_tag lanobe, :image, fallback: "no-image2.jpg" %>
-            <h5 class="pl-3"><%= lanobe.title %></h5>
+            <h5 class="ml-3"><%= lanobe.title %></h5>
           </div>
         <% end %>
       <% end %>
@@ -15,11 +15,11 @@
     </div>
   </div>
 
-  <div class="bg-light rounded-lg mt-5 ml-4 mr-4"><h4 class="pt-4 pl-4">ランキング<i class="far fa-thumbs-up pl-2 fa-lg"></i></h4>
+  <div class="bg-light rounded-lg mt-5 ml-4 mr-4"><h4 class="pt-4 pl-4">ランキング<i class="far fa-thumbs-up ml-2 fa-lg"></i></h4>
     <div class="row">
       <% @favorite_ranks.each do |lanobe| %>
         <div class="flex-row ml-4">
-          <div class="pl-2 py-4">
+          <div class="ml-2 my-4">
             <%= link_to lanobe_path(lanobe.id), class: "no-underline" do %>
               <div class="lanobe-gazou">
                 <%= attachment_image_tag lanobe, :image, size: "200x235", fallback: "no-image2.jpg" %>
@@ -28,10 +28,10 @@
             <% end %>
             <div class="user-name">
               <%= link_to user_path(lanobe.user.id) do %>
-                <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no-image.jpg", size: '40x40', class: "rounded-circle" %></p>
-                <p class="pl-3"><%= lanobe.user.name %></p>
+                <p class="ml-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no-image.jpg", size: '40x40', class: "rounded-circle" %></p>
+                <p class="ml-3"><%= lanobe.user.name %></p>
               <% end %>
-              <p class="pl-5"><i class="far fa-thumbs-up pr-1"></i><%= lanobe.favorites.count %></p>
+              <p class="ml-4"><i class="far fa-thumbs-up mr-1"></i><%= lanobe.favorites.count %></p>
             </div>
           </div>
         </div>
@@ -55,10 +55,10 @@
             <% end %>
             <div class="user-name">
               <%= link_to user_path(lanobe.user.id) do %>
-                <p class="pl-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no-image.jpg", size: '40x40', class: "rounded-circle" %>
-                <p class="pl-3"><%= lanobe.user.name %></p>
+                <p class="ml-1"><%= attachment_image_tag lanobe.user, :profile_image, :fill, 40, 40, fallback: "no-image.jpg", size: '40x40', class: "rounded-circle" %>
+                <p class="ml-3"><%= lanobe.user.name %></p>
               <% end %>
-              <p class="pl-5"><i class="far fa-comment pl-1"></i><%= lanobe.post_comments.count %></p>
+              <p class="ml-4"><i class="far fa-comment ml-1"></i><%= lanobe.post_comments.count %></p>
             </div>
           </div>
         </div>
