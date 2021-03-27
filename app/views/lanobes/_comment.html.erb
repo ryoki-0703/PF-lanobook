@@ -9,8 +9,9 @@
   </div>
 <% end %>
 
+<br>
 <% lanobe.post_comments.each do |post_comment| %>
-  <p class="d-inline-block"><%= attachment_image_tag post_comment.user, :profile_image, :fill, 35, 35, fallback: "no_image.jpg", class: "rounded-circle" %></p>
+  <p class="d-inline-block"><%= attachment_image_tag post_comment.user, :profile_image, :fill, 35, 35, fallback: "no_image.jpg", size: '35x35', class: "rounded-circle" %></p>
   <p class="d-inline-block ml-3 mr-5"><%= post_comment.user.name %></p>
   <p class="d-inline-block ml-2"><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
   <br><p class="d-inline-block ml-5"><%= post_comment.comment %></p>
