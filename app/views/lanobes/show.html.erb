@@ -4,7 +4,9 @@
   <div class="col-md-5 pt-5">
     <%= attachment_image_tag @lanobe, :image, :fill, 400, 450, fallback: "no-image2.jpg", size: '400x450' %>
     <div class="lanobe-user mt-4">
-      <p class="d-inline-block"><%= attachment_image_tag @lanobe.user, :profile_image, fallback: "no-image.jpg", size: '70x70', class: "rounded-circle" %></p>
+      <%= link_to user_path(@lanobe.user.id) do %>
+        <p class="d-inline-block"><%= attachment_image_tag @lanobe.user, :profile_image, fallback: "no-image.jpg", size: '70x70', class: "rounded-circle" %></p>
+      <% end %>
       <h5 class="d-inline-block ml-3 mr-5"><%= @lanobe.user.name %></h5>
       <p class="d-inline-block ml-5"><%= @lanobe.created_at.strftime('%Y/%m/%d') %></p>
     </div>
