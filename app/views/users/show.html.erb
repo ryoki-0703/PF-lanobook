@@ -8,9 +8,9 @@
       <br><div id="follow_form" class="d-inline-block mt-3 ml-5">
             <%= render "follow_info", user: @user %>
           </div>
-      <br><h5 class="d-inline-block ml-5 mt-3"><i class="far fa-thumbs-up mr-1"></i><%= link_to "いいね一覧", favorites_users_path %></h5>
       <% if @user.id == current_user.id %>
-        <p class="mt-3 ml-5"><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+        <br><h5 class="d-inline-block ml-5 mt-3"><i class="far fa-thumbs-up mr-1"></i><%= link_to "いいね一覧", favorites_users_path %></h5>
+        <br><p class="mt-3 ml-5"><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
       <% end %>
     </div>
 
