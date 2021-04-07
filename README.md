@@ -28,6 +28,6 @@ https://docs.google.com/spreadsheets/d/1T70Twq-H-o_2dShCrGkJI-9W4PIss9JvMgZxukMp
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails,Bootstrap,RSpec
 - JSライブラリ：jQuery
 - IDE：Cloud9
