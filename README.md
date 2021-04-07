@@ -26,7 +26,7 @@ https://app.diagrams.net/?src=about#G10aoIUj8VL-4MX8AHPZCdsy-hb8PfiZG7
 
 プロジェクト管理　https://docs.google.com/spreadsheets/d/1lb8nbvIlLbKQ1dWUvYGiWnUgclCes2E3YS_bGVvEgww/edit#gid=1773513600
 
-## チャレンジ要素一覧
+## 使用技術
 https://docs.google.com/spreadsheets/d/1T70Twq-H-o_2dShCrGkJI-9W4PIss9JvMgZxukMpjFw/edit#gid=0
 ## 開発環境
 - OS：Linux(CentOS)
