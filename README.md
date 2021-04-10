@@ -23,11 +23,14 @@ https://app.diagrams.net/?src=about#G10aoIUj8VL-4MX8AHPZCdsy-hb8PfiZG7
 アプリケーション詳細設計　https://docs.google.com/spreadsheets/d/1HTnD2laAa6zsI3xTPORHrgwAHfE-9xz2e_-d2UZlCqM/edit?usp=sharing
 
 画面遷移図　　https://app.diagrams.net/?src=about#G15mkgvSoZuwBSRDye4aPdAQnzkijEWOaO
-## チャレンジ要素一覧
+
+プロジェクト管理　https://docs.google.com/spreadsheets/d/1lb8nbvIlLbKQ1dWUvYGiWnUgclCes2E3YS_bGVvEgww/edit#gid=1773513600
+
+## 使用技術
 https://docs.google.com/spreadsheets/d/1T70Twq-H-o_2dShCrGkJI-9W4PIss9JvMgZxukMpjFw/edit#gid=0
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails,Bootstrap,RSpec
 - JSライブラリ：jQuery
 - IDE：Cloud9
